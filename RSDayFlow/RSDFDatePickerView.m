@@ -676,6 +676,9 @@ static NSString * const RSDFDatePickerViewDayCellIdentifier = @"RSDFDatePickerVi
         NSString *format = [dateFormatter dateFormat];
         format = [format stringByReplacingOccurrencesOfString:@"d" withString:@""];
         format = [format stringByReplacingOccurrencesOfString:@"," withString:@""];
+        if ([format hasSuffix:@"/"]) {
+            format = [format substringToIndex: format.length - 2];
+        }
         [dateFormatter setDateFormat:format];
         monthHeader.dateLabel.text = [dateFormatter stringFromDate:formattedDate];
 
