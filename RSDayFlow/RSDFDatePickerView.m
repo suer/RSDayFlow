@@ -131,8 +131,11 @@ static NSString * const RSDFDatePickerViewDayCellIdentifier = @"RSDFDatePickerVi
 - (CGRect)daysOfWeekViewFrame
 {
     BOOL isPhone = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
+#if RSDF_APP_EXTENSION
+    BOOL isPortraitInterfaceOrientation = true;
+#else
     BOOL isPortraitInterfaceOrientation = UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]);
-    
+#endif
     CGRect namesOfDaysViewFrame = self.bounds;
     if (isPhone) {
         if (isPortraitInterfaceOrientation) {

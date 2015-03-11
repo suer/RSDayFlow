@@ -239,7 +239,11 @@
 
 - (BOOL)isPortraitInterfaceOrientation
 {
+#if RSDF_APP_EXTENSION
+    return true;
+#else
     return UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]);
+#endif
 }
 
 #pragma mark - Attributes of the View
